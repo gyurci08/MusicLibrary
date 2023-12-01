@@ -1,18 +1,17 @@
 ﻿@using MusicLibrary.Models.Objects;
+
+
 @{
     ViewData["Title"] = "Home Page";
 }
-
-
 @model List<Music>;
 
 
 
-
-
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <table>
+    <h1 class="display-4">Welcome on my page!</h1>
+
+    <table class="table table-bordered table-striped table-sm">
 
         <thead>
             <tr>
@@ -23,25 +22,35 @@
         </thead>
 
         <tbody>
-            <tr>
+            
 
-                @foreach (Music m in Model)
+                @foreach (Music music in Model)
                 {
-                    <td>@m.ArtistMusics.First().ArtistId</td>
-                    <td>@m.Title</td>
-                    <td>@m.Year</td>
-                }
+                    <tr>
+                        <td>
+                        @for (int i = 0; i < music.Artists.Count(); i++)
+                                    {
+                            if (music.Artists.Count() > 1 && i < music.Artists.Count()-1)
+                                {
+                                    @(music.Artists.ElementAt(i).Name+", ")
+                                }
+                                else
+                                    @(music.Artists.ElementAt(i).Name)
+                                
+                                    }
+                        </td>
 
-            </tr>
+                        <td>@music.Title</td>
+                        <td>@music.Year</td>
+                    </tr>
+                }
+                        
+            
+            
         </tbody>
     </table>
 
 
 
 
-
-
-
-
-    <p></p>
 </div>

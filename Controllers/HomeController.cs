@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MusicLibrary.Models;
+using Microsoft.EntityFrameworkCore;
 using MusicLibrary.Models.Objects;
 using System.Diagnostics;
 
@@ -7,24 +7,18 @@ namespace MusicLibrary.Controllers
 {
     public class HomeController : Controller
     {
+        private DatabaseCtx dbCtx;
+        public HomeController(DatabaseCtx ctx) => dbCtx = ctx;
 
-        private DatabaseContext dbContext { get; set; }  // Kell a db context
 
-        public HomeController(DatabaseContext ctx)           // Konstruktor bekéri
-        {
-            dbContext = ctx;
-        }
 
 
         public IActionResult Index()
         {
-            List<Music> musics = dbContext.Musics.ToList();
+            var music = dbCtx.Music.Include(m=>m.Artists).ToList();
 
-            return View(musics);
+            return View(music);
         }
-
-
-
 
     }
 }

@@ -1,17 +1,22 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using static System.Reflection.Metadata.BlobBuilder;
 
 namespace MusicLibrary.Models.Objects
 {
     public class Music
     {
-        [Key]
-        public int MusicId { get; set; }
-        [MinLength(2)]
-        public string Title { get; set; } = null!;
-        [Range(1930, 2300)]
+        public Music() => Artists = new HashSet<Artist>();
+
+
+        public int Id { get; set; }
+        public string Title { get; set; } = string.Empty;
         public int Year { get; set; }
 
-        public IList<ArtistMusic> ArtistMusics { get; set; }
+
+
+        public ICollection<Artist> Artists { get; set; }
+
+
+
 
 
     }

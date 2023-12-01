@@ -1,17 +1,17 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace MusicLibrary.Models.Objects
+﻿namespace MusicLibrary.Models.Objects
 {
     public class Artist
     {
-        [Key]
-        public int ArtistId { get; set; }
-        [MinLength(2)]
-        public string Name { get; set; } = null!;
+        public Artist() => Musics = new HashSet<Music>();
 
 
-        public IList<ArtistMusic> ArtistMusics { get; set; }
+
+        public int Id { get; set; }
+        public string Name { get; set; } = string.Empty;
+
+
+
+
+        public ICollection<Music> Musics { get; set; }
     }
 }
-
-

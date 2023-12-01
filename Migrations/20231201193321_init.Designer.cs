@@ -10,9 +10,9 @@ using MusicLibrary.Models.Objects;
 
 namespace MusicLibrary.Migrations
 {
-    [DbContext(typeof(DatabaseContext))]
-    [Migration("20231201181304_init2")]
-    partial class init2
+    [DbContext(typeof(DatabaseCtx))]
+    [Migration("20231201193321_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,59 +23,59 @@ namespace MusicLibrary.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("ArtistMusic", b =>
+                {
+                    b.Property<int>("ArtistsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MusicsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ArtistsId", "MusicsId");
+
+                    b.HasIndex("MusicsId");
+
+                    b.ToTable("ArtistMusic");
+
+                    b.HasData(
+                        new
+                        {
+                            ArtistsId = 1,
+                            MusicsId = 1
+                        });
+                });
+
             modelBuilder.Entity("MusicLibrary.Models.Objects.Artist", b =>
                 {
-                    b.Property<int>("ArtistId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ArtistId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ArtistId");
+                    b.HasKey("Id");
 
                     b.ToTable("Artists");
 
                     b.HasData(
                         new
                         {
-                            ArtistId = 1,
+                            Id = 1,
                             Name = "Edda Művek"
-                        });
-                });
-
-            modelBuilder.Entity("MusicLibrary.Models.Objects.ArtistMusic", b =>
-                {
-                    b.Property<int>("ArtistId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MusicId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ArtistId", "MusicId");
-
-                    b.HasIndex("MusicId");
-
-                    b.ToTable("ArtistMusics");
-
-                    b.HasData(
-                        new
-                        {
-                            ArtistId = 1,
-                            MusicId = 1
                         });
                 });
 
             modelBuilder.Entity("MusicLibrary.Models.Objects.Music", b =>
                 {
-                    b.Property<int>("MusicId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MusicId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -84,42 +84,32 @@ namespace MusicLibrary.Migrations
                     b.Property<int>("Year")
                         .HasColumnType("int");
 
-                    b.HasKey("MusicId");
+                    b.HasKey("Id");
 
-                    b.ToTable("Musics");
+                    b.ToTable("Music");
 
                     b.HasData(
                         new
                         {
-                            MusicId = 1,
+                            Id = 1,
                             Title = "Éjjel érkezem",
                             Year = 1986
                         });
                 });
 
-            modelBuilder.Entity("MusicLibrary.Models.Objects.ArtistMusic", b =>
+            modelBuilder.Entity("ArtistMusic", b =>
                 {
                     b.HasOne("MusicLibrary.Models.Objects.Artist", null)
-                        .WithMany("ArtistMusics")
-                        .HasForeignKey("ArtistId")
+                        .WithMany()
+                        .HasForeignKey("ArtistsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("MusicLibrary.Models.Objects.Music", null)
-                        .WithMany("ArtistMusics")
-                        .HasForeignKey("MusicId")
+                        .WithMany()
+                        .HasForeignKey("MusicsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("MusicLibrary.Models.Objects.Artist", b =>
-                {
-                    b.Navigation("ArtistMusics");
-                });
-
-            modelBuilder.Entity("MusicLibrary.Models.Objects.Music", b =>
-                {
-                    b.Navigation("ArtistMusics");
                 });
 #pragma warning restore 612, 618
         }

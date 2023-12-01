@@ -12,79 +12,84 @@ namespace MusicLibrary.Migrations
                 name: "Artists",
                 columns: table => new
                 {
-                    ArtistId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Artists", x => x.ArtistId);
+                    table.PrimaryKey("PK_Artists", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Musics",
+                name: "Music",
                 columns: table => new
                 {
-                    MusicId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Year = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Musics", x => x.MusicId);
+                    table.PrimaryKey("PK_Music", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ArtistMusics",
+                name: "ArtistMusic",
                 columns: table => new
                 {
-                    ArtistId = table.Column<int>(type: "int", nullable: false),
-                    MusicId = table.Column<int>(type: "int", nullable: false)
+                    ArtistsId = table.Column<int>(type: "int", nullable: false),
+                    MusicsId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ArtistMusics", x => new { x.ArtistId, x.MusicId });
+                    table.PrimaryKey("PK_ArtistMusic", x => new { x.ArtistsId, x.MusicsId });
                     table.ForeignKey(
-                        name: "FK_ArtistMusics_Artists_ArtistId",
-                        column: x => x.ArtistId,
+                        name: "FK_ArtistMusic_Artists_ArtistsId",
+                        column: x => x.ArtistsId,
                         principalTable: "Artists",
-                        principalColumn: "ArtistId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ArtistMusics_Musics_MusicId",
-                        column: x => x.MusicId,
-                        principalTable: "Musics",
-                        principalColumn: "MusicId",
+                        name: "FK_ArtistMusic_Music_MusicsId",
+                        column: x => x.MusicsId,
+                        principalTable: "Music",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
                 table: "Artists",
-                columns: new[] { "ArtistId", "Name" },
+                columns: new[] { "Id", "Name" },
                 values: new object[] { 1, "Edda Művek" });
 
             migrationBuilder.InsertData(
-                table: "Musics",
-                columns: new[] { "MusicId", "Title", "Year" },
+                table: "Music",
+                columns: new[] { "Id", "Title", "Year" },
                 values: new object[] { 1, "Éjjel érkezem", 1986 });
 
+            migrationBuilder.InsertData(
+                table: "ArtistMusic",
+                columns: new[] { "ArtistsId", "MusicsId" },
+                values: new object[] { 1, 1 });
+
             migrationBuilder.CreateIndex(
-                name: "IX_ArtistMusics_MusicId",
-                table: "ArtistMusics",
-                column: "MusicId");
+                name: "IX_ArtistMusic_MusicsId",
+                table: "ArtistMusic",
+                column: "MusicsId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ArtistMusics");
+                name: "ArtistMusic");
 
             migrationBuilder.DropTable(
                 name: "Artists");
 
             migrationBuilder.DropTable(
-                name: "Musics");
+                name: "Music");
         }
     }
 }
