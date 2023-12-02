@@ -14,8 +14,9 @@ namespace MusicLibrary.Models.Configuration
                             new { Id = 1, Name = "Edda Művek" },
                             new { Id = 2, Name = "R-GO" },
                             new { Id = 3, Name = "Desh" },
-                            new { Id = 4, Name = "Azariah" }
-
+                            new { Id = 4, Name = "Azariah" },
+                            new { Id = 5, Name = "Daryl Hall" },
+                            new { Id = 6, Name = "John Oates" }
                             );
 
 

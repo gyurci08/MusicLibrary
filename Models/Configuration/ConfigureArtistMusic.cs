@@ -13,7 +13,9 @@ namespace MusicLibrary.Models.Configuration
                                                 new { ArtistsId = 1, MusicsId = 1 },
                                                 new { ArtistsId = 2, MusicsId = 2 },
                                                 new { ArtistsId = 3, MusicsId = 3 },
-                                                new { ArtistsId = 4, MusicsId = 3 }
+                                                new { ArtistsId = 4, MusicsId = 3 },
+                                                new { ArtistsId = 5, MusicsId = 4 },
+                                                new { ArtistsId = 6, MusicsId = 4 }
                                               ));
 
         }

@@ -14,7 +14,9 @@ namespace MusicLibrary.Models.Configuration
 
             entity.HasData(new { Id = 1, Title = "Éjjel érkezem", Year = 1986 },
                            new { Id = 2, Title = "Ballag a katona", Year = 1985 },
-                           new { Id = 3, Title = "Eldorádó", Year = 2023 }
+                           new { Id = 3, Title = "Eldorádó", Year = 2023 },
+                           new { Id = 4, Title = "Maneater", Year = 1982 }
+                            
 
             );
 

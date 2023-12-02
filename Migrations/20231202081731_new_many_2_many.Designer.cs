@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MusicLibrary.Models.Objects;
 
@@ -10,9 +11,10 @@ using MusicLibrary.Models.Objects;
 namespace MusicLibrary.Migrations
 {
     [DbContext(typeof(DatabaseCtx))]
-    partial class DatabaseCtxModelSnapshot : ModelSnapshot
+    [Migration("20231202081731_new_many_2_many")]
+    partial class new_many_2_many
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
