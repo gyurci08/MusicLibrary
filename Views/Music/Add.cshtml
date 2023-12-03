@@ -36,6 +36,11 @@
         <span asp-validation-for="SelectedArtists" class="text-danger"></span>
     </div>
 
+
+    <a class="btn btn-dark float-end mr-1" asp-controller="Artist" asp-action="Add">Új előadó</a>
+
+
+
     <input type="hidden" asp-for="music.Id" />
 
     <button type="submit" class="btn btn-primary">@ViewBag.Action</button>

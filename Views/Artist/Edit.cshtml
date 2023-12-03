@@ -1,0 +1,29 @@
+﻿@using MusicLibrary.Models.Objects;
+@using MusicLibrary.Models.ViewModel;
+
+
+@model ArtistViewModel
+
+@{
+    string title = ViewBag.Action + " Előadó";
+    ViewBag.Title = title;
+}
+
+<h2>@ViewBag.Title</h2>
+
+<form asp-action="Edit" method="post">
+
+    <input type="hidden" asp-for="artist.Id" />
+
+
+    <div class="form-group">
+        <label asp-for="artist.Name">Név</label>
+        <input asp-for="artist.Name" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-primary">@ViewBag.Action</button>
+    <a asp-controller="Home" asp-action="Index"
+       class="btn btn-primary">Mégsem</a>
+</form>
+
+
