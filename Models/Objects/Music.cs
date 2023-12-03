@@ -1,4 +1,5 @@
-﻿using static System.Reflection.Metadata.BlobBuilder;
+﻿using System.ComponentModel.DataAnnotations;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace MusicLibrary.Models.Objects
 {
@@ -8,7 +9,9 @@ namespace MusicLibrary.Models.Objects
 
 
         public int Id { get; set; }
+        [Required]
         public string Title { get; set; } = string.Empty;
+        [Required]
         public int Year { get; set; }
 
 

@@ -6,11 +6,12 @@ namespace MusicLibrary.Models.ViewModel
 {
     public class MusicViewModel
     {
+        [Required]
+        public Music music { get; set; }
 
-        public Music music { get; set; } = new Music();
-
-        [Required(ErrorMessage = "Please select at least one author.")]
+        [Required]
         public int[] SelectedArtists { get; set; }
+
 
 
 
