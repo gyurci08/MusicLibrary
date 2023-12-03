@@ -19,7 +19,6 @@ namespace MusicLibrary.Controllers
         public IActionResult Edit(int id)
         {
             ViewBag.Action = "Edit";
-            
             ViewBag.Artists = dbCtx.Artists.OrderBy(g => g.Name).ToList();
 
             

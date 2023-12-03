@@ -18,6 +18,7 @@ namespace artistLibrary.Controllers
         public IActionResult Add()
         {
             ViewBag.Action = "Add";
+            ViewBag.Artists = dbCtx.Artists.OrderBy(g => g.Name).ToList();
 
             var artistViewModel = new ArtistViewModel { artist = new Artist() };
 
@@ -32,6 +33,9 @@ namespace artistLibrary.Controllers
         public IActionResult Add(ArtistViewModel artistViewModel)
         {
             ViewBag.Action = "Add";
+            ViewBag.Artists = dbCtx.Artists.OrderBy(g => g.Name).ToList();
+
+
             Artist artist = artistViewModel.artist;
 
             if (ModelState.IsValid)

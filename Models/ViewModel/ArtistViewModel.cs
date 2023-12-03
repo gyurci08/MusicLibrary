@@ -8,5 +8,7 @@ namespace MusicLibrary.Models.ViewModel
         [Required]
         public Artist artist { get; set; }
 
+
+
     }
 }
