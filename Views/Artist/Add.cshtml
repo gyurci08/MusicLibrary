@@ -12,6 +12,12 @@
 <h2>@ViewBag.Title</h2>
 
 <form asp-action="Add" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div>
+        <p>Amennyiben az előadó már létezik, átirányításra kerül a módosításra.</p>
+    </div>
+
 
     <div class="form-group">
         <label asp-for="artist.Name">Név</label>

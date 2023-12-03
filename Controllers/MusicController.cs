@@ -48,6 +48,10 @@ namespace MusicLibrary.Controllers
         [HttpPost]
         public IActionResult Edit(MusicViewModel musicViewModel)
         {
+            ViewBag.Action = "Edit";
+            ViewBag.Artists = dbCtx.Artists.OrderBy(g => g.Name).ToList();
+
+
             if (ModelState.IsValid)
             {
                 Music music = null!;
@@ -105,7 +109,6 @@ namespace MusicLibrary.Controllers
             else
             {
                 System.Diagnostics.Debug.WriteLine("$$$ Modelstate is invalid.");
-                //return RedirectToAction("Edit", "Music");
                 return View(musicViewModel);
             }
         }
@@ -164,6 +167,11 @@ namespace MusicLibrary.Controllers
         [HttpPost]
         public IActionResult Add(MusicViewModel musicViewModel)
         {
+            ViewBag.Action = "Add";
+            ViewBag.Artists = dbCtx.Artists.OrderBy(g => g.Name).ToList();
+
+
+
             if (ModelState.IsValid)
             {
                 Music music = musicViewModel.music;
@@ -203,7 +211,7 @@ namespace MusicLibrary.Controllers
             else
             {
                 System.Diagnostics.Debug.WriteLine("$$$ Modelstate is invalid.");
-                return RedirectToAction("Add", "Music");
+                return View(musicViewModel);
 
             }
         }

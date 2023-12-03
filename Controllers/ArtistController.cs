@@ -31,6 +31,7 @@ namespace artistLibrary.Controllers
         [HttpPost]
         public IActionResult Add(ArtistViewModel artistViewModel)
         {
+            ViewBag.Action = "Add";
             Artist artist = artistViewModel.artist;
 
             if (ModelState.IsValid)
@@ -63,7 +64,7 @@ namespace artistLibrary.Controllers
             else
             {
                 System.Diagnostics.Debug.WriteLine("$$$ Modelstate is invalid.");
-                return RedirectToAction("Add", "Artist");
+                return View(artistViewModel);
 
             }
         }

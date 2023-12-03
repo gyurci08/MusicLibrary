@@ -6,11 +6,12 @@ namespace MusicLibrary.Models.ViewModel
 {
     public class MusicViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "A zene nincs megadva!")]
         public Music music { get; set; } = null!;
 
-        [Required(ErrorMessage = "Add meg az előadó(k) nevét!")]
-        public int[] SelectedArtists { get; set; } = Array.Empty<int>();
+
+        [Required(ErrorMessage = "Nincs előadó hozzáadva!")]
+        public int[] SelectedArtists { get; set; }
 
 
 

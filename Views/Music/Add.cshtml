@@ -12,6 +12,9 @@
 <h2>@ViewBag.Title</h2>
 
 <form asp-action="Add" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+
 
     <div class="form-group">
         <label asp-for="music.Title">Cím</label>
@@ -31,9 +34,6 @@
                 asp-items='@new MultiSelectList(ViewBag.Artists, "Id", "Name", Model.SelectedArtists)'>
         </select>
 
-    </div>
-    <div class="col">
-        <span asp-validation-for="SelectedArtists" class="text-danger"></span>
     </div>
 
 

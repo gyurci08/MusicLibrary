@@ -8,7 +8,8 @@ namespace MusicLibrary.Models.Objects
 
 
         public int Id { get; set; }
-        [Required(ErrorMessage = "Add meg az előadó nevét!")]
+
+        [Required(ErrorMessage = "Az előadó neve nincs megadva!")]
         public string Name { get; set; } = string.Empty;
 
 
