@@ -11,8 +11,8 @@ using MusicLibrary.Models.Objects;
 namespace MusicLibrary.Migrations
 {
     [DbContext(typeof(DatabaseCtx))]
-    [Migration("20231201194153_test_data")]
-    partial class test_data
+    [Migration("20231203112745_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -57,6 +57,16 @@ namespace MusicLibrary.Migrations
                         {
                             ArtistsId = 4,
                             MusicsId = 3
+                        },
+                        new
+                        {
+                            ArtistsId = 5,
+                            MusicsId = 4
+                        },
+                        new
+                        {
+                            ArtistsId = 6,
+                            MusicsId = 4
                         });
                 });
 
@@ -96,6 +106,16 @@ namespace MusicLibrary.Migrations
                         {
                             Id = 4,
                             Name = "Azariah"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Daryl Hall"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "John Oates"
                         });
                 });
 
@@ -136,6 +156,12 @@ namespace MusicLibrary.Migrations
                             Id = 3,
                             Title = "Eldorádó",
                             Year = 2023
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Title = "Maneater",
+                            Year = 1982
                         });
                 });
 

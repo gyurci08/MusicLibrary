@@ -1,0 +1,49 @@
+﻿@using MusicLibrary.Models.Objects;
+@using MusicLibrary.Models.ViewModel;
+
+
+@model MusicViewModel
+
+@{
+    string title = ViewBag.Action + " Zene";
+    ViewBag.Title = title;
+}
+
+<h2>@ViewBag.Title</h2>
+
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="music.Title">Cím</label>
+        <input asp-for="music.Title" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="music.Year">Év</label>
+        <input asp-for="music.Year" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="music.Artists">Előadó</label>
+
+
+        <select asp-for="SelectedArtists" class="form-control"
+                asp-items='@new MultiSelectList(ViewBag.Artists, "Id", "Name", Model.SelectedArtists)'>
+     </select>
+
+    </div>
+    <div class="col">
+        <span asp-validation-for="SelectedArtists" class="text-danger"></span>
+    </div>
+
+    <input type="hidden" asp-for="music.Id" />
+
+    <button type="submit" class="btn btn-primary">@ViewBag.Action</button>
+    <a asp-controller="Home" asp-action="Index"
+       class="btn btn-primary">Mégsem</a>
+</form>
+
+
+
+

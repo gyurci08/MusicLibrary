@@ -62,17 +62,39 @@ namespace MusicLibrary.Migrations
             migrationBuilder.InsertData(
                 table: "Artists",
                 columns: new[] { "Id", "Name" },
-                values: new object[] { 1, "Edda Művek" });
+                values: new object[,]
+                {
+                    { 1, "Edda Művek" },
+                    { 2, "R-GO" },
+                    { 3, "Desh" },
+                    { 4, "Azariah" },
+                    { 5, "Daryl Hall" },
+                    { 6, "John Oates" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Music",
                 columns: new[] { "Id", "Title", "Year" },
-                values: new object[] { 1, "Éjjel érkezem", 1986 });
+                values: new object[,]
+                {
+                    { 1, "Éjjel érkezem", 1986 },
+                    { 2, "Ballag a katona", 1985 },
+                    { 3, "Eldorádó", 2023 },
+                    { 4, "Maneater", 1982 }
+                });
 
             migrationBuilder.InsertData(
                 table: "ArtistMusic",
                 columns: new[] { "ArtistsId", "MusicsId" },
-                values: new object[] { 1, 1 });
+                values: new object[,]
+                {
+                    { 1, 1 },
+                    { 2, 2 },
+                    { 3, 3 },
+                    { 4, 3 },
+                    { 5, 4 },
+                    { 6, 4 }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_ArtistMusic_MusicsId",

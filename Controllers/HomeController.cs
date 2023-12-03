@@ -10,15 +10,23 @@ namespace MusicLibrary.Controllers
         private DatabaseCtx dbCtx;
         public HomeController(DatabaseCtx ctx) => dbCtx = ctx;
 
-
-
-
         public IActionResult Index()
         {
             var music = dbCtx.Music.Include(m=>m.Artists).ToList();
 
             return View(music);
         }
+
+  
+
+
+
+
+
+
+
+
+
 
     }
 }
