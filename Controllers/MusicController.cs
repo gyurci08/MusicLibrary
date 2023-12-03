@@ -22,6 +22,8 @@ namespace MusicLibrary.Controllers
             
             ViewBag.Artists = dbCtx.Artists.OrderBy(g => g.Name).ToList();
 
+            
+
             Music music_with_id=null!;
 
             foreach(Music music in dbCtx.Music.Include(m=>m.Artists).ToList())
@@ -29,8 +31,13 @@ namespace MusicLibrary.Controllers
                 if(music.Id == id) { music_with_id = music; break; }
             }
 
+            int[] SelectedArtists = Array.Empty<int>();
 
-            var musicViewModel = new MusicViewModel { music = music_with_id };
+
+            SelectedArtists = music_with_id.Artists.Select(
+               ba => ba.Id).ToArray() ?? null!;
+
+            var musicViewModel = new MusicViewModel { music = music_with_id, SelectedArtists = SelectedArtists };
 
 
 
@@ -98,8 +105,8 @@ namespace MusicLibrary.Controllers
             else
             {
                 System.Diagnostics.Debug.WriteLine("$$$ Modelstate is invalid.");
-                return RedirectToAction("Edit", "Music");
-   
+                //return RedirectToAction("Edit", "Music");
+                return View(musicViewModel);
             }
         }
 

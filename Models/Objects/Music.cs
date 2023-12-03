@@ -9,10 +9,10 @@ namespace MusicLibrary.Models.Objects
 
 
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Add meg az zene nevét!")]
         public string Title { get; set; } = string.Empty;
         [Required]
-        [Range(1800,2500)]
+        [Range(1800,2500, ErrorMessage = "Az év 1800 és 2500 közötti érték legyen!")]
         public int Year { get; set; }
 
 

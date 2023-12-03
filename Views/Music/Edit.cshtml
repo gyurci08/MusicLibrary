@@ -23,15 +23,19 @@
         <input asp-for="music.Year" class="form-control">
     </div>
 
-    <div class="form-group">
-        <label asp-for="music.Artists">Előadó</label>
 
+
+
+    <div class="form-group">
+        <label asp-for="music.Artists">Előadó(k)</label>
 
         <select asp-for="SelectedArtists" class="form-control"
                 asp-items='@new MultiSelectList(ViewBag.Artists, "Id", "Name", Model.SelectedArtists)'>
      </select>
-
+        
     </div>
+
+
 
     <div class="col">
         <span asp-validation-for="SelectedArtists" class="text-danger"></span>
