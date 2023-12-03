@@ -12,6 +12,7 @@ namespace MusicLibrary.Models.Objects
         [Required]
         public string Title { get; set; } = string.Empty;
         [Required]
+        [Range(1800,2500)]
         public int Year { get; set; }
 
 

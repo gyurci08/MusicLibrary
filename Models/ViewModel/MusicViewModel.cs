@@ -9,7 +9,7 @@ namespace MusicLibrary.Models.ViewModel
         [Required]
         public Music music { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Add meg az előadó nevét!")]
         public int[] SelectedArtists { get; set; }
 
 
