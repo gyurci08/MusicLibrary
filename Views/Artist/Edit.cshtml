@@ -22,6 +22,10 @@
     </div>
 
     <button type="submit" class="btn btn-primary">@ViewBag.Action</button>
+
+    <a asp-controller="Artist" asp-action="Delete" asp-route-id="@Model.artist.Id" class="btn btn-primary">Remove</a>
+
+
     <a asp-controller="Home" asp-action="Index"
        class="btn btn-primary">Mégsem</a>
 </form>

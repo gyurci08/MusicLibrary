@@ -1,0 +1,19 @@
+﻿@using MusicLibrary.Models.ViewModel;
+
+@model ArtistViewModel
+
+
+@{
+    ViewBag.Title = "Film törlése";
+}
+
+<h2>Valóban törölni szeretné?</h2>
+<h3>@Model.artist.Name</h3>
+
+<form asp-action="Delete" method="post">
+
+    <input type="hidden" asp-for="artist.Id" />
+    <button type="submit" class="btn btn-primary">Törlés</button>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Mégse</a>
+
+</form>

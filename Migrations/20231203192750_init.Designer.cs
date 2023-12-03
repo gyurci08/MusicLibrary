@@ -11,7 +11,7 @@ using MusicLibrary.Models.Objects;
 namespace MusicLibrary.Migrations
 {
     [DbContext(typeof(DatabaseCtx))]
-    [Migration("20231203143627_init")]
+    [Migration("20231203192750_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MusicLibrary.Models.Objects;
 using MusicLibrary.Models.ViewModel;
 
@@ -42,7 +43,7 @@ namespace artistLibrary.Controllers
             {
                 foreach (Artist artist_from_db in dbCtx.Artists)
                 {
-                    if (artist_from_db.Name == artistViewModel.artist.Name) 
+                    if (artist_from_db.Name == artistViewModel.artist.Name || artist_from_db.Id == artistViewModel.artist.Id) 
                     { 
                         artist = artist_from_db;
                         return RedirectToAction("Edit", "Artist", artist_from_db);
@@ -115,6 +116,47 @@ namespace artistLibrary.Controllers
        
             
         }
+
+
+
+
+
+        // delete
+        [HttpGet]
+        public ViewResult Delete(int Id)
+        {
+            ViewBag.Action = "Delete";
+
+            Artist artist_with_id = null!;
+
+            foreach (Artist artist in dbCtx.Artists.ToList())
+            {
+                if (artist.Id == Id) { artist_with_id = artist; break; }
+            }
+
+            System.Diagnostics.Debug.WriteLine("$$$ Artist Id: " + artist_with_id.Id);
+            System.Diagnostics.Debug.WriteLine("$$$ Artist Name: " + artist_with_id.Name);
+
+
+
+
+
+            var artistViewModel = new ArtistViewModel { artist = artist_with_id };
+
+
+
+            return View(artistViewModel);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Artist artist)
+        {
+            dbCtx.Artists.Remove(artist);
+            dbCtx.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
+        }
+
 
 
 
